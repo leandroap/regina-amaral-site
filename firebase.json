@@ -5,6 +5,12 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "predeploy": [
+      "node scripts/predeploy.js"
+    ],
+    "postdeploy": [
+      "node scripts/postdeploy.js"
     ]
   }
 }
