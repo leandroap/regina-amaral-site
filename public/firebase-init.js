@@ -2,13 +2,13 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.19.0/fireba
 import { getAnalytics, isSupported } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-analytics.js';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBlGagY25dvKyGRUw3JEZmVKjhOnmdV3xs',
-  authDomain: 'recaamaral-prd.firebaseapp.com',
-  projectId: 'recaamaral-prd',
-  storageBucket: 'recaamaral-prd.firebasestorage.app',
-  messagingSenderId: '288982675740',
-  appId: '1:288982675740:web:31b165f634e4e3b8e64ad9',
-  measurementId: 'G-9TZX1DB743',
+  apiKey: '${VITE_FIREBASE_API_KEY}',
+  authDomain: '${VITE_FIREBASE_AUTH_DOMAIN}',
+  projectId: '${VITE_FIREBASE_PROJECT_ID}',
+  storageBucket: '${VITE_FIREBASE_STORAGE_BUCKET}',
+  messagingSenderId: '${VITE_FIREBASE_MESSAGING_SENDER_ID}',
+  appId: '${VITE_FIREBASE_APP_ID}',
+  measurementId: '${VITE_FIREBASE_MEASUREMENT_ID}',
 };
 
 const app = initializeApp(firebaseConfig);
