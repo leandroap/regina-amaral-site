@@ -3,9 +3,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 const navbar = document.getElementById('navbar');
 const onScroll = () => {
   const scrolled = window.scrollY > 20;
-  navbar.classList.toggle('bg-white/90', scrolled);
-  navbar.classList.toggle('backdrop-blur', scrolled);
-  navbar.classList.toggle('shadow-sm', scrolled);
+  navbar.classList.toggle('is-scrolled', scrolled);
 };
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
@@ -13,13 +11,16 @@ onScroll();
 const menuBtn = document.getElementById('menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 menuBtn.addEventListener('click', () => {
-  const open = mobileMenu.classList.toggle('hidden') === false;
+  const open = mobileMenu.hidden;
+  mobileMenu.hidden = !open;
   menuBtn.setAttribute('aria-expanded', String(open));
+  menuBtn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
 });
 mobileMenu.querySelectorAll('a').forEach((a) =>
   a.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
+    mobileMenu.hidden = true;
     menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-label', 'Abrir menu');
   })
 );
 

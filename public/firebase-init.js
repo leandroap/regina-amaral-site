@@ -11,8 +11,15 @@ const firebaseConfig = {
   measurementId: '${VITE_FIREBASE_MEASUREMENT_ID}',
 };
 
-const app = initializeApp(firebaseConfig);
+const hasUnreplacedConfig = Object.values(firebaseConfig).some(
+  (value) => !value || value.includes('$' + '{VITE_FIREBASE_')
+);
 
-isSupported().then((supported) => {
-  if (supported) getAnalytics(app);
-});
+export const analyticsReady = (async () => {
+  if (hasUnreplacedConfig || !firebaseConfig.measurementId) return null;
+
+  const app = initializeApp(firebaseConfig);
+  if (!(await isSupported())) return null;
+
+  return getAnalytics(app);
+})();
