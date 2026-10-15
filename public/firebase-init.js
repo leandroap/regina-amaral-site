@@ -12,7 +12,7 @@ const firebaseConfig = {
 };
 
 const hasUnreplacedConfig = Object.values(firebaseConfig).some(
-  (value) => !value || value.includes('${VITE_FIREBASE_')
+  (value) => !value || value.includes('$' + '{VITE_FIREBASE_')
 );
 
 export const analyticsReady = (async () => {
